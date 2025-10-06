@@ -120,6 +120,9 @@ def index():
 def load_user(user_id):
     return usuario_models.Usuario.query.get(int(user_id))
 
+@app.route("/painel_admin", methods=["GET"])
+def painel_admin():
+    return render_template("painel_admin.html")
 
 # ------------ ROTA DE LOGIN --------------------
 
@@ -235,6 +238,8 @@ def esqueci_a_senha_route():
             return jsonify({"status": "erro", "message": f"Erro ao enviar e-mail: {str(e)}"})
 
     return jsonify({"status": "erro", "message": "Usuário não encontrado."})
+
+
 
 @app.route('/painelAdmin/alterar_senha', methods=['POST'])
 @login_required
